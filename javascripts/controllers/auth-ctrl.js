@@ -11,7 +11,7 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
       console.log("authenticate error", error);
     }).then((user) => {
       $rootScope.user = user;
-      $location.url("/pin/view");
+      $location.url("/board/view");
     }).catch((error) => {
       console.log("getUser error", error);
     });
