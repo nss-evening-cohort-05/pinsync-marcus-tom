@@ -46,5 +46,17 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG){
     });
   };
 
+  let newBoard = (newBoard) => {
+    return $q((resolve, reject) => {
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json?orderBy="uid"&equalTo="${userId}"`, JSON.stringify(newBoard))
+      .then((result) => {
+        console.log(result);
+        resolve(result);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  };
+
   return{getBoardList:getBoardList, getSingleUserBoards:getSingleUserBoards};
 });
