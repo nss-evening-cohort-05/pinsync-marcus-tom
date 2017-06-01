@@ -1,11 +1,11 @@
-app.controller("BoardViewCtrl", function($scope, BoardFactory, FIREBASE_CONFIG){
+app.controller("BoardViewCtrl", function($rootScope, $scope, BoardFactory, FIREBASE_CONFIG){
   console.log("BoardViewCtrl");
 
   $scope.board = [];
 
-
-  let getBoards = () => {
-    BoardFactory.boardList().then((boards) => {
+///// This grabs individual user's boards
+  let getMyBoards = () => {
+    BoardFactory.getSingleUserBoards($rootScope.user.uid).then((boards) => {
       console.log("board factory", boards);
       $scope.board = boards;
     }).catch((error) => {
@@ -13,7 +13,7 @@ app.controller("BoardViewCtrl", function($scope, BoardFactory, FIREBASE_CONFIG){
     });
   };
 
-  getBoards();
+  getMyBoards();
 
 
 });
