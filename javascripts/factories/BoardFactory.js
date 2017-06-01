@@ -14,7 +14,7 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG){
               boards.push(boardCollection[key]);
             });
           // }
-          console.log("resolve", boardCollection);
+          // console.log("resolve", boardCollection);
           resolve(boards);
         resolve(addBoard);
       }).catch((error) => {
@@ -26,7 +26,6 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG){
 
   let getSingleUserBoards = (userId) => {
     let boardArray = [];
-    console.log("inside getSingleUserBoards");
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/boards.json?orderBy="uid"&equalTo="${userId}"`)
       .then((fbBoards) => {
@@ -35,10 +34,10 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG){
             Object.keys(boardCollection).forEach((key) => {
             boardCollection[key].id=key;
             boardArray.push(boardCollection[key]);
-            console.log ("BoardFactory array" , boardArray);
+            // console.log ("BoardFactory array" , boardArray);
           });
         }
-        console.log(boardArray);
+        // console.log(boardArray);
         resolve(boardArray);
       })
       .catch((error) => {
