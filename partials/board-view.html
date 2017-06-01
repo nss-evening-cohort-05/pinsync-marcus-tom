@@ -2,8 +2,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6" ng-repeat="board in board">
-      <p>{{board.title}}</p>
-      <p>{{board.uid}}</p>
+      <div class="panel">
+        <div class="panel-heading">{{board.title}}</div>
+          <div class="panel-body">
+            <p>{{board.uid}}</p>
+          </div>
+      </div>
     </div>
   </div>
 </div>
