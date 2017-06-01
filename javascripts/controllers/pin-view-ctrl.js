@@ -1,13 +1,13 @@
-app.controller("PinViewCtrl", function($scope, PinFactory, FIREBASE_CONFIG){
+app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, BoardFactory, FIREBASE_CONFIG){
   // console.log("PinViewCtrl");
 
   $scope.pin = [];
 
 
   let getPins = () => {
-    PinFactory.pinList().then((pins) => {
-      console.log("pins", pins);
-      $scope.pin = pins;
+    PinFactory.getPinList($routeParams.boardid).then((results) => {
+      $scope.pin = results;
+      console.log("inside viewctrl, logging results", results);
     }).catch((error) => {
       console.log("get error", error);
     });
