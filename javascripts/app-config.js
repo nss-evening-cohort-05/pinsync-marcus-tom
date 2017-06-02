@@ -63,7 +63,7 @@ app.config(function($routeProvider) {  // $routeProvider --- angular key word
     controller: 'BoardViewCtrl'
     // resolve : {isAuth}
   })
-  .when('/board/new/:id', {
+  .when('/board/new', {
     templateUrl: '/partials/board-new.html',
     controller: 'BoardNewCtrl'
     // resolve : {isAuth}
