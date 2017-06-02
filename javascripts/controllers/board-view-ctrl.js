@@ -1,4 +1,4 @@
-app.controller("BoardViewCtrl", function($rootScope, $scope, BoardFactory, FIREBASE_CONFIG){
+app.controller("BoardViewCtrl", function($rootScope, $location, $scope, BoardFactory, FIREBASE_CONFIG){
 
   $scope.board = [];
 
@@ -13,6 +13,11 @@ app.controller("BoardViewCtrl", function($rootScope, $scope, BoardFactory, FIREB
   };
 
   getMyBoards();
+
+  // $scope.boardNewView = () => {
+  //   console.log("clicking");
+  //   $location.url('#!/board/new/${board.uid}');
+  // };
 
 
 });
