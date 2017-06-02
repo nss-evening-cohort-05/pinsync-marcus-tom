@@ -1,4 +1,4 @@
-app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG){
+app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
 
   let getBoardList = () => {
     let boards = [];
@@ -46,10 +46,13 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG){
     });
   };
 
-  let postNewBoard = (boardId) => {
+  let postNewBoard = (boardTitle, boardId) => {
     console.log("in post new board");
     return $q((resolve, reject) => {
-      $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json`, JSON.stringify(boardId))
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json`, JSON.stringify({
+        title: boardTitle.title,
+        uid: $rootScope.user.uid
+      }))
       .then((result) => {
         console.log(result);
         resolve(result);
