@@ -1,4 +1,4 @@
-app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG){
+app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
 
   let getPinList = (boardID) => {
     let pins = [];
@@ -22,6 +22,24 @@ app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG){
     });
   };
 
-  return {getPinList:getPinList};
+  let postNewPin = (pinId) => {
+    console.log("in post new pin", pinId);
+    return $q((resolve, reject) => {
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify({
+        description: pinId.description,
+        title: pinId.title,
+        uid: $rootScope.user.uid
+      }))
+      .then((result) => {
+        console.log(result);
+        resolve(result);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  };
+
+
+  return {getPinList:getPinList, postNewPin:postNewPin};
 
 });
