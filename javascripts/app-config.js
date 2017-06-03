@@ -43,12 +43,12 @@ app.config(function($routeProvider) {  // $routeProvider --- angular key word
     templateUrl: '/partials/auth.html',
     controller: 'AuthCtrl'
   })
-  .when('/pin/view/:boardid', {
+  .when('/board/:uid/pin/:boardid', {
     templateUrl: '/partials/pin-view.html',
     controller: 'PinViewCtrl'
     // resolve : {isAuth}
   })
-  .when('/pin/new', {
+  .when('/pin/new/:boardid', {
     templateUrl: '/partials/pin-new.html',
     controller: 'PinNewCtrl'
     // resolve : {isAuth}

@@ -2,6 +2,9 @@ app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, BoardFa
   // console.log("PinViewCtrl");
 
   $scope.pin = [];
+  $scope.board = {};
+
+  console.log("scope board", $scope.board);
 
 
   let getPins = () => {
@@ -14,6 +17,9 @@ app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, BoardFa
   };
 
   getPins();
+
+  $scope.newPinBoardId = $routeParams.boardid;
+  console.log("SCopre board id", $scope.getBoardId);
 
 
 });

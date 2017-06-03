@@ -1,14 +1,16 @@
-app.controller("PinNewCtrl", function($q, $http, $scope, $rootScope, $location, PinFactory, FIREBASE_CONFIG){
+app.controller("PinNewCtrl", function($q, $http, $routeParams, $scope, $rootScope, $location, PinFactory, FIREBASE_CONFIG){
 
+  $scope.board = [];
 
   $scope.addNewPin = () => {
-  console.log("adding new Pin");
   $scope.newPin = $rootScope.user.uid;
-  console.log("scope new Pin", $scope.newPin);
+  $scope.boardId = $routeParams.boardId;
+  console.log("board id", $scope.boardId);
   PinFactory.postNewPin($scope.newPin)
     .then((returns) => {
-      console.log("new pin returns");
-      //Show pin view here
+      console.log("route", $routeParams);
+      $scope.newPin = {returns};
+      $location.url("/pin/view");
     }).catch((error) => {
       console.log("Add Pin Error", error);
     });
