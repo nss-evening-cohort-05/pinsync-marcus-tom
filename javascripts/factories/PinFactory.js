@@ -5,9 +5,7 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/pins.json?orderBy="boardID"&equalTo="${boardID}"`)
       .then((fbPins) => {
-        console.log("pin list", fbPins);
           let pinCollection = fbPins.data;
-          console.log(pinCollection);
           // if(addressesCollection !== null){
             Object.keys(pinCollection).forEach((key) => {
               pinCollection[key].id=key;
@@ -22,14 +20,13 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
   };
 
   let postNewPin = (pinId, boardId) => {
-    console.log("pin id", pinId);
-    console.log("board id", boardId);
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify({
         description: pinId.description,
         title: pinId.title,
         uid: $rootScope.user.uid,
-        boardID: boardId.boardid
+        url: pinId.url,
+        boardID: boardId
       }))
       .then((result) => {
         console.log(result);
@@ -40,8 +37,19 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
+  let deleted = (id) => {
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/pins/${id}.json`)
+      .then((results) => {
+        resolve(results);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  };
 
 
-  return {getPinList:getPinList, postNewPin:postNewPin};
+
+  return {getPinList:getPinList, postNewPin:postNewPin, deleted:deleted};
 
 });
