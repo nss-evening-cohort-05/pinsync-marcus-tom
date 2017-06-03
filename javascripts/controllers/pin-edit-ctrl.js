@@ -1,3 +1,11 @@
-app.controller("PinEditCtrl", function(){
-  console.log("PinEditCtrl");
+app.controller("PinEditCtrl", function($scope, $routeParams, PinFactory,  FIREBASE_CONFIG){
+
+  $scope.pinId = $routeParams.id;
+
+  $scope.editPin = (pinId) => {
+    console.log("pin id", $scope.pinId);
+  };
+
+
+
 });
