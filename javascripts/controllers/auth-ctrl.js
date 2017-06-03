@@ -7,7 +7,6 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 
   let logMeIn = () => {
     AuthFactory.authenticate($scope.auth).then((userCreds) => {
-      console.log("userCreds", userCreds);
       return UserFactory.getUser(userCreds.uid);
     }, (error) => {
       $scope.alerts.push({msg: error.message});
@@ -28,7 +27,6 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
       console.log("registerWithEmail error", error);
     })
     .then((registerComplete) => {
-      console.log("registerComplete", registerComplete);
       logMeIn();
     }).catch((error) => {
       console.log("addUser error", error);

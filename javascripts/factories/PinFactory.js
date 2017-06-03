@@ -21,13 +21,15 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
-  let postNewPin = (pinId) => {
+  let postNewPin = (pinId, boardId) => {
+    console.log("pin id", pinId);
+    console.log("board id", boardId);
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify({
         description: pinId.description,
         title: pinId.title,
         uid: $rootScope.user.uid,
-        boardID: pinId.boardid
+        boardID: boardId.boardid
       }))
       .then((result) => {
         console.log(result);
