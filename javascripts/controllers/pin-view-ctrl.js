@@ -18,7 +18,7 @@ app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, BoardFa
 
   getPins();
 
-  $scope.getBoardId = $routeParams.boardid;
+  $scope.newPinBoardId = $routeParams.boardid;
   console.log("SCopre board id", $scope.getBoardId);
 
 

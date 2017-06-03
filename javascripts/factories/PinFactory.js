@@ -26,7 +26,8 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
       $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify({
         description: pinId.description,
         title: pinId.title,
-        uid: $rootScope.user.uid
+        uid: $rootScope.user.uid,
+        boardID: pinId.boardid
       }))
       .then((result) => {
         console.log(result);

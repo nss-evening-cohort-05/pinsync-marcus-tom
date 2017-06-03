@@ -48,7 +48,7 @@ app.config(function($routeProvider) {  // $routeProvider --- angular key word
     controller: 'PinViewCtrl'
     // resolve : {isAuth}
   })
-  .when('/pin/new/:boardId', {
+  .when('/pin/new/:boardid', {
     templateUrl: '/partials/pin-new.html',
     controller: 'PinNewCtrl'
     // resolve : {isAuth}
@@ -73,5 +73,5 @@ app.config(function($routeProvider) {  // $routeProvider --- angular key word
     controller: 'BoardEditCtrl'
     // resolve : {isAuth}
   })
-  .otherwise('/board/view');
+  .otherwise('/auth');
 });
