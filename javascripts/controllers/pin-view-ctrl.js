@@ -1,4 +1,4 @@
-app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, BoardFactory, FIREBASE_CONFIG){
+app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, FIREBASE_CONFIG){
   // console.log("PinViewCtrl");
 
   $scope.pin = [];
@@ -16,7 +16,16 @@ app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, BoardFa
 
   getPins();
 
-  $scope.newPinBoardId = $routeParams.boardid;
+  $scope.deletePin = (pinId) => {
+    console.log("delete", pinId);
+    PinFactory.deleted(pinId).then(() => {
+      getPins();
+    }).catch((error) => {
+      console.log("delete", error);
+    });
+  };
+
+  // $scope.newPinBoardId = $routeParams.boardid;
 
 
 });

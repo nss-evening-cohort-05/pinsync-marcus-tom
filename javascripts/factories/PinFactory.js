@@ -40,8 +40,20 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
+  let deleted = (id) => {
+    console.log("firebase delete pin", id);
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/pins/${id}.json`)
+      .then((results) => {
+        resolve(results);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  };
 
 
-  return {getPinList:getPinList, postNewPin:postNewPin};
+
+  return {getPinList:getPinList, postNewPin:postNewPin, deleted:deleted};
 
 });
