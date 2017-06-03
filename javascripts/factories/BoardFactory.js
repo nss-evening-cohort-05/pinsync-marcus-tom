@@ -62,5 +62,17 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
-  return{getBoardList:getBoardList, getSingleUserBoards:getSingleUserBoards, postNewBoard:postNewBoard};
+  let deleted = (id) => {
+    console.log("firebase delete", id);
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/boards/${id}.json`)
+      .then((results) => {
+        resolve(results);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  };
+
+  return{getBoardList:getBoardList, getSingleUserBoards:getSingleUserBoards, postNewBoard:postNewBoard, deleted:deleted};
 });

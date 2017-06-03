@@ -1,4 +1,4 @@
-app.controller("BoardViewCtrl", function($rootScope, $location, $scope, BoardFactory, FIREBASE_CONFIG){
+app.controller("BoardViewCtrl", function($rootScope, $routeParams, $location, $scope, BoardFactory, FIREBASE_CONFIG){
 
   $scope.board = [];
 
@@ -13,6 +13,16 @@ app.controller("BoardViewCtrl", function($rootScope, $location, $scope, BoardFac
   };
 
   getMyBoards();
+
+  $scope.deleteBoard = (id) => {
+    id = $rootScope.user.uid;
+    console.log("delete", id);
+    BoardFactory.deleted(id).then(() => {
+      getMyBoards();
+    }).catch((error) => {
+      console.log("delete", error);
+    });
+  };
 
   // $scope.boardNewView = () => {
   //   console.log("clicking");

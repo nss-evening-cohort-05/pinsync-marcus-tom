@@ -3,7 +3,6 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
   let getPinList = (boardID) => {
     let pins = [];
     return $q((resolve, reject) => {
-    console.log("inside PinFactory, logging boardID", boardID);
       $http.get(`${FIREBASE_CONFIG.databaseURL}/pins.json?orderBy="boardID"&equalTo="${boardID}"`)
       .then((fbPins) => {
         console.log("pin list", fbPins);
@@ -23,7 +22,6 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
   };
 
   let postNewPin = (pinId) => {
-    console.log("in post new pin", pinId);
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify({
         description: pinId.description,
@@ -38,6 +36,7 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
       });
     });
   };
+
 
 
   return {getPinList:getPinList, postNewPin:postNewPin};
