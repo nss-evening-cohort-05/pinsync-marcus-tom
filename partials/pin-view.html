@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4" ng-repeat="pin in pin">
-      <div class="col-xs-9">
+      <div class="col-xs-6">
         blah blah blah
         <p>{{pin.title}}</p>
         <p>{{pin.description}}</p>
@@ -15,6 +15,11 @@
       </div>
       <div class="col-xs-3">
         <button class="btn btn-warning btn-sm" ng-click="deletePin(pin.id);">Trash</button>
+      </div>
+      <div class="col-xs-3">
+        <!-- <a ng-href=/#!/pin/edit/{{pin.id}}> -->
+        <button class="btn btn-warning btn-sm" ng-click="editSinglePin(pin.id)">Edit Butt-Tin</button>
+        </a>
       </div>
     </div>
   </div>
