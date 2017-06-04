@@ -19,7 +19,7 @@ app.controller("PinEditCtrl", function($scope, $rootScope, $routeParams, $locati
 
   $scope.makeAnEditOnSinglePin = () => {
     console.log($scope.editPin);
-    PinFactory.editPin($scope.editPin, $scope.boardid)
+    PinFactory.editPin($scope.editPin)
       .then((returns) => {
         $scope.newPin = {};
         $location.url(`/board/${$scope.user}/pin/${$scope.boardid}`);

@@ -20,18 +20,10 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
   };
 
   let getSinglePin = (pinId) => {
-    console.log("FB single pinb id", pinId);
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/pins/${pinId}.json`)
       .then((fbPins) => {
-        console.log("get single pin", fbPins);
-          // let pinCollection = fbPins.data;
-          // // if(addressesCollection !== null){
-          //   Object.keys(pinCollection).forEach((key) => {
-          //     pinCollection[key].id=key;
-          //     pins.push(pinCollection[key]);
-          //   });
-          // // }
+          fbPins.data.id = pinId;
           resolve(fbPins);
       }).catch((error) => {
         reject(error);
@@ -57,16 +49,14 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
-  let editPin = (pinId, boardId) => {
-    console.log("pin id", pinId);
-    console.log("board id", boardId);
+  let editPin = (pin) => {
     return $q((resolve, reject) => {
-      $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify({
-        description: pinId.description,
-        title: pinId.title,
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/pins/${pin.id}.json`, JSON.stringify({
+        description: pin.description,
+        title: pin.title,
         uid: $rootScope.user.uid,
-        url: pinId.url,
-        boardID: boardId
+        url: pin.url,
+        boardID: pin.boardID
       }))
       .then((result) => {
         console.log(result);
