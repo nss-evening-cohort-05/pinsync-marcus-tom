@@ -1,22 +1,27 @@
 <h1>Board view</h1>
-<div class="container">
-  <a ng-href="/#!/board/new"><button class="btn btn-lg btn-primary">
-    Add New Board
-  </button></a>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6" ng-repeat="board in board">
-      <div class="panel col-xs-9">
-        <a ng-href="/#!/board/{{board.uid}}/pin/{{board.id}}">
-          <div class="panel-heading">{{board.title}}</div>
-        </a>
-          <div class="panel-body">
-            <p>{{board.uid}}</p>
-          </div>
-      </div>
-      <div class="col-xs-3">
-        <button class="btn btn-warning btn-sm" ng-click="deleteBoard(board.id);">Trash</button>
+<div class="board-container">
+  <div class="container">
+    <a ng-href="/#!/board/new"><button class="btn btn-lg btn-primary board-btn">
+      Add New Board
+    </button></a>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="panel col-xs-6" ng-repeat="board in board">
+        <div class="col-xs-10">
+          <a ng-href="/#!/board/{{board.uid}}/pin/{{board.id}}">
+            <div class="panel-heading">{{board.title}}</div>
+          </a>
+            <!-- <div class="panel-body">
+              <p>{{board.uid}}</p>
+            </div> -->
+        </div>
+        <div class="col-xs-1">
+          <button class="board-btn" ng-click="deleteBoard(board.id);"><i class="fa fa-pencil-square-o board-icon"></i></button>
+        </div>
+        <div class="col-xs-1">
+          <button class="board-btn" ng-click="deleteBoard(board.id);"><i class="fa fa-times board-icon"></i></button>
+        </div>
       </div>
     </div>
   </div>
