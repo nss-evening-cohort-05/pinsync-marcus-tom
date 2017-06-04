@@ -53,7 +53,7 @@ app.config(function($routeProvider) {  // $routeProvider --- angular key word
     controller: 'PinNewCtrl'
     // resolve : {isAuth}
   })
-  .when('/pin/edit/:id', {
+  .when('/pin/edit/:id/:boardid', {
     templateUrl: '/partials/pin-edit.html',
     controller: 'PinEditCtrl'
     // resolve : {isAuth}

@@ -10,8 +10,6 @@ app.controller("PinNewCtrl", function($q, $http, $routeParams, $scope, $rootScop
   PinFactory.postNewPin($scope.newPin, $scope.boardid)
     .then((returns) => {
       $scope.newPin = {returns};
-      console.log("scope new pins", $scope.newPin);
-      console.log("scope user id", $scope.user);
       $location.url(`/board/${$scope.user}/pin/${$scope.boardid}`);
     }).catch((error) => {
       console.log("Add Pin Error", error);

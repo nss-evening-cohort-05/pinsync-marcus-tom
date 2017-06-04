@@ -18,15 +18,16 @@ app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, FIREBAS
 
   getPins();
 
-  $scope.editSinglePin = (pinId) => {
-    console.log("clicking edit button");
-    console.log("pin id in edit", pinId);
-    PinFactory.getSinglePin(pinId).then((results) => {
-      console.log("edit in", results);
-    }).catch((error) => {
-      console.log("edit pin error", error);
-    });
-  };
+  // $scope.editSinglePin = (pinId) => {
+  //   console.log("clicking edit button");
+  //   console.log("pin id in edit", pinId);
+  //   PinFactory.getSinglePin(pinId).then((results) => {
+  //     $location.url();
+  //     console.log("edit in", results);
+  //   }).catch((error) => {
+  //     console.log("edit pin error", error);
+  //   });
+  // };
 
   $scope.deletePin = (pinId) => {
     console.log("delete", pinId);

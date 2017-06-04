@@ -57,6 +57,26 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
+  let editPin = (pinId, boardId) => {
+    console.log("pin id", pinId);
+    console.log("board id", boardId);
+    return $q((resolve, reject) => {
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify({
+        description: pinId.description,
+        title: pinId.title,
+        uid: $rootScope.user.uid,
+        url: pinId.url,
+        boardID: boardId
+      }))
+      .then((result) => {
+        console.log(result);
+        resolve(result);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  };
+
   let deleted = (id) => {
     return $q((resolve, reject) => {
       $http.delete(`${FIREBASE_CONFIG.databaseURL}/pins/${id}.json`)
@@ -70,6 +90,6 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
 
 
 
-  return {getPinList:getPinList, postNewPin:postNewPin, deleted:deleted, getSinglePin:getSinglePin};
+  return {getPinList:getPinList, postNewPin:postNewPin, deleted:deleted, getSinglePin:getSinglePin, editPin:editPin};
 
 });
