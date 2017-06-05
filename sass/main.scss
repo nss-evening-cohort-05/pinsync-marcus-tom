@@ -30,7 +30,7 @@ input:focus {
   font-size: $icon-size;
   margin: 0 auto;
 }
-.authenticate input {
+input {
   padding: 10px;
   border: none;
   border-bottom: solid 2px #ffffff;
@@ -39,11 +39,11 @@ input:focus {
   width:100%;
   background-color: transparent;
 }
-.authenticate input::placeholder {
+input::placeholder {
   color: #fbfbfb;
 }
-  .authenticate input:focus {
-    border-bottom: solid 2px #969696;
+  input:focus {
+    border-bottom: solid 2px tomato;
   }
 /* BUTTON STYLES */
 
@@ -85,6 +85,7 @@ input:focus {
 .btn:hover,
 .btn:active {
 	color: #0e83cd;
+
 }
 
 .btn:hover:after,
@@ -137,6 +138,54 @@ input:focus {
 
 .board-btn:hover:after,
 .board-btn:active:after {
+	height: 100%;
+}
+
+
+.pin-btn {
+  border-radius: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 5px 20px;
+	display: inline-block;
+	// margin: 5px 0px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	color: #0e83cd;
+  border: none;
+}
+
+.pin-btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  width: 100%;
+	height: 0;
+	top: 0;
+	left: 0;
+	background: #fff;
+  border:none;
+}
+
+.pin-btn:hover,
+.pin-btn:active {
+	color: #0e83cd;
+}
+
+.pin-btn:hover:after,
+.pin-btn:active:after {
 	height: 100%;
 }
 
