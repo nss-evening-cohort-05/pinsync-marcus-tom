@@ -62,6 +62,20 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
+  let editBoard = (board) => {
+    return $q((resolve, reject) => {
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/boards/${board.id}.json`, JSON.stringify({
+        title: board.title
+      }))
+      .then((result) => {
+        console.log("in boardF", result);
+        resolve(result);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  };
+
   let deleted = (id) => {
     console.log("firebase delete", id);
     return $q((resolve, reject) => {
@@ -74,5 +88,5 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
-  return{getBoardList:getBoardList, getSingleUserBoards:getSingleUserBoards, postNewBoard:postNewBoard, deleted:deleted};
+  return{getBoardList:getBoardList, getSingleUserBoards:getSingleUserBoards, postNewBoard:postNewBoard, editBoard:editBoard, deleted:deleted};
 });
