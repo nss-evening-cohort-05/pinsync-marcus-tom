@@ -17,7 +17,9 @@
             </div> -->
         </div>
         <div class="col-xs-1">
-          <button class="board-btn" ng-click="deleteBoard(board.id);"><i class="fa fa-pencil-square-o board-icon"></i></button>
+          <a ng-href=/#!/board/edit/{{board.id}}>
+          <button class="board-btn" ><i class="fa fa-pencil-square-o board-icon"></i></button>
+          </a>
         </div>
         <div class="col-xs-1">
           <button class="board-btn" ng-click="deleteBoard(board.id);"><i class="fa fa-times board-icon"></i></button>

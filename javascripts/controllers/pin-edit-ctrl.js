@@ -10,6 +10,7 @@ app.controller("PinEditCtrl", function($scope, $rootScope, $routeParams, $locati
     PinFactory.getSinglePin($scope.pinId).then((results) => {
       console.log("edit in", results);
       $scope.editPin = results.data;
+      console.log($scope.editPin);
     }).catch((error) => {
       console.log("edit pin error", error);
     });
