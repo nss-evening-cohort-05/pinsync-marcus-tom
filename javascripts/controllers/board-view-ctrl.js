@@ -5,7 +5,6 @@ app.controller("BoardViewCtrl", function($rootScope, $scope, BoardFactory, FIREB
 ///// This grabs individual user's boards
   let getMyBoards = () => {
     BoardFactory.getSingleUserBoards($rootScope.user.uid).then((boards) => {
-      console.log("board factory", boards);
       $scope.board = boards;
     }).catch((error) => {
       console.log("get error", error);
@@ -15,7 +14,6 @@ app.controller("BoardViewCtrl", function($rootScope, $scope, BoardFactory, FIREB
   getMyBoards();
 
   $scope.deleteBoard = (boardId) => {
-    console.log("delete", boardId);
     BoardFactory.deleted(boardId).then(() => {
       getMyBoards();
     }).catch((error) => {
