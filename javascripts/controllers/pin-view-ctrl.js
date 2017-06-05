@@ -9,8 +9,6 @@ app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, FIREBAS
   let getPins = () => {
     PinFactory.getPinList($routeParams.boardid).then((results) => {
       $scope.pin = results;
-      console.log("board id", $scope.boardId);
-      console.log("inside viewctrl, logging results", results);
     }).catch((error) => {
       console.log("get error", error);
     });
@@ -19,7 +17,6 @@ app.controller("PinViewCtrl", function($routeParams, $scope, PinFactory, FIREBAS
   getPins();
 
   $scope.deletePin = (pinId) => {
-    console.log("delete", pinId);
     PinFactory.deleted(pinId).then(() => {
       getPins();
     }).catch((error) => {

@@ -1,29 +1,5 @@
 app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
 
-  let getBoardList = () => {
-    let boards = [];
-    return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/boards.json`)
-      .then((addBoard) => {
-        console.log("address list", addBoard);
-          let boardCollection = addBoard.data;
-          console.log(boardCollection);
-          // if(addressesCollection !== null){
-            Object.keys(boardCollection).forEach((key) => {
-              boardCollection[key].id=key;
-              boards.push(boardCollection[key]);
-            });
-          // }
-          // console.log("resolve", boardCollection);
-          resolve(boards);
-        resolve(addBoard);
-      }).catch((error) => {
-        reject(error);
-      });
-    });
-  };
-
-
   let getSingleUserBoards = (userId) => {
     let boardArray = [];
     return $q((resolve, reject) => {
@@ -34,10 +10,8 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
             Object.keys(boardCollection).forEach((key) => {
             boardCollection[key].id=key;
             boardArray.push(boardCollection[key]);
-            // console.log ("BoardFactory array" , boardArray);
           });
         }
-        // console.log(boardArray);
         resolve(boardArray);
       })
       .catch((error) => {
@@ -47,14 +21,12 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
   };
 
   let postNewBoard = (boardTitle, boardId) => {
-    console.log("in post new board");
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json`, JSON.stringify({
         title: boardTitle.title,
         uid: $rootScope.user.uid
       }))
       .then((result) => {
-        console.log(result);
         resolve(result);
       }).catch((error) => {
         reject(error);
@@ -64,15 +36,12 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
 
   let editBoard = (board) => {
     return $q((resolve, reject) => {
-      console.log("edit board in factory", board);
       $http.put(`${FIREBASE_CONFIG.databaseURL}/boards/${board.id}.json`, JSON.stringify({
         title: board.title,
         uid: $rootScope.user.uid
       }))
       .then((result) => {
-        console.log("in boardF", result);
         result.data.id = board;
-        console.log("resulting data", result.data.id);
         resolve(board);
       }).catch((error) => {
         reject(error);
@@ -81,7 +50,6 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
   };
 
   let deleted = (id) => {
-    console.log("firebase delete", id);
     return $q((resolve, reject) => {
       $http.delete(`${FIREBASE_CONFIG.databaseURL}/boards/${id}.json`)
       .then((results) => {
@@ -92,5 +60,5 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
     });
   };
 
-  return{getBoardList:getBoardList, getSingleUserBoards:getSingleUserBoards, postNewBoard:postNewBoard, editBoard:editBoard, deleted:deleted};
+  return{getSingleUserBoards:getSingleUserBoards, postNewBoard:postNewBoard, editBoard:editBoard, deleted:deleted};
 });

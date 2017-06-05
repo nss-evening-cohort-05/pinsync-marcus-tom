@@ -1,4 +1,4 @@
-<h2>inside pin-view</h2>
+<h2>Here Are Your Pins</h2>
 <div class="container">
   <a ng-href="/#!/pin/new/{{boardId}}"><button class="btn btn-lg btn-primary">
     Add New Pin
@@ -6,19 +6,24 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-xs-4" ng-repeat="pin in pin">
-      <div class="col-xs-6">
-        blah blah blah
-        <p>{{pin.title}}</p>
-        <p>{{pin.description}}</p>
-        <p>{{pin.url}}</p>
+    <div class="col-xs-3" ng-repeat="pin in pin">
+      <div class="panel col-xs-3">
+        <div class="panel-heading">
+          <p>{{pin.title}}</p>
+        </div>
+        <div class="panel-body">
+          <p>{{pin.description}}</p>
+        </div>
+        <div class="thumbnail">
+          <img src="{{pin.url}}">
+        </div>
       </div>
       <div class="col-xs-3">
         <button class="btn btn-warning btn-sm" ng-click="deletePin(pin.id);">Trash</button>
       </div>
       <div class="col-xs-3">
         <a ng-href=/#!/pin/edit/{{pin.id}}/{{pin.boardID}}>
-        <button class="btn btn-warning btn-sm">Edit Butt-Tin</button>
+        <button class="btn btn-warning btn-sm">Edit Pin</button>
         </a>
       </div>
     </div>
