@@ -41,7 +41,6 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
         boardID: boardId
       }))
       .then((result) => {
-        console.log(result);
         resolve(result);
       }).catch((error) => {
         reject(error);
@@ -59,7 +58,6 @@ app.factory("PinFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
         boardID: pin.boardID
       }))
       .then((result) => {
-        console.log(result);
         resolve(result);
       }).catch((error) => {
         reject(error);
