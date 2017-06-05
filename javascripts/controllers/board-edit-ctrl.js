@@ -19,12 +19,16 @@ app.controller("BoardEditCtrl", function($scope, $rootScope, $routeParams, $loca
   $scope.makeAnEditOnSingleBoard = () => {
     console.log("editBoard scope", $scope.editBoard);
     BoardFactory.editBoard($scope.editBoard).then((returns) => {
+      console.log("returns", returns);
       $scope.board = {};
+      console.log("scoped board in board-edit-ctrl", $scope.board);
       $location.url(`/board/view`);
     }).catch((error) => {
       console.log("error in edit button", error);
     });
   };
+
+
 
 
 
