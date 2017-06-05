@@ -64,12 +64,16 @@ app.factory("BoardFactory", function($q, $http, $rootScope, FIREBASE_CONFIG){
 
   let editBoard = (board) => {
     return $q((resolve, reject) => {
+      console.log("edit board in factory", board);
       $http.put(`${FIREBASE_CONFIG.databaseURL}/boards/${board.id}.json`, JSON.stringify({
-        title: board.title
+        title: board.title,
+        uid: $rootScope.user.uid
       }))
       .then((result) => {
         console.log("in boardF", result);
-        resolve(result);
+        result.data.id = board;
+        console.log("resulting data", result.data.id);
+        resolve(board);
       }).catch((error) => {
         reject(error);
       });
