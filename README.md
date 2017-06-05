@@ -1,3 +1,18 @@
+# Marcus' Comic Book Challenge
+
+#### TECHNOLOGIES USED:
+- HTML
+- SASS
+- JavaScript - ES6
+- Angular
+- BOOTSTRAP
+- JSON
+
+## Assignment Parameters:
+* RUN GRUNT ON PROJECT
+* USE ES6 SYNTAX (Fat Arrows, let, const)
+* Angular Syntax
+
 # Using your mad Angular skillz - Pinterest Clone
 
 You will be broken into teams and your goals is to reverse engineer the basic functionality of Pinterest and build your own version of it.
@@ -32,10 +47,30 @@ You will be broken into teams and your goals is to reverse engineer the basic fu
   |   |--- title: "Stupid animals"
 </pre>
 
-## Authentication
 
-### Relevent Firebase docs
+#### Screenshot of User Board View:
+![Splashpage](https://raw.githubusercontent.com/nss-evening-cohort-05/modernjs-mastery-exercise-jmarcusgill/challenge/images/screenshots/page_load.png)
 
-+ Determine if the user is logged in with [onAuthStateChanged or currentUser](https://firebase.google.com/docs/auth/web/manage-users#get_the_currently_signed-in_user)
-+ Perform an action as soon as user logs in or out with the [onAuthStateChanged event listener](https://firebase.google.com/docs/auth/web/manage-users#get_the_currently_signed-in_user)
-+ Allow user to use OAuth to log in via a social service with [signInWithPopup()](https://firebase.google.com/docs/auth/web/github-auth#handle_the_sign-in_flow_with_the_firebase_sdk) (GitHub linked, other OAuth providers are listed in the left sidebar).
+
+
+
+#### HOW TO RUN:
+```
+1. git clone git@github.com:nss-evening-cohort-05/pinsync-marcus-tom.git
+2. pinsync-marcus-tom
+3. npm install http-server -g
+4. http-server -p 8080
+
+cd into lib directory
+bower init
+bower install jquery --save
+bower install bootstrap --save
+bower install anguler-routes --save
+npm init
+npm install
+
+```
+
+#### Contributor:
+[James Marcus Gill](https://github.com/jmarcusgill)
+[Thomas Fitzgerald](https://github.com/basictom)
