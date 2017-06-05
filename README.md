@@ -1,8 +1,9 @@
-# Marcus' Comic Book Challenge
+# Marcus & Tom's Pinterest Clone
 
 #### TECHNOLOGIES USED:
 - HTML
 - SASS
+- GRUNT
 - JavaScript - ES6
 - Angular
 - BOOTSTRAP
@@ -49,7 +50,7 @@ You will be broken into teams and your goals is to reverse engineer the basic fu
 
 
 #### Screenshot of User Board View:
-![Splashpage](https://raw.githubusercontent.com/nss-evening-cohort-05/modernjs-mastery-exercise-jmarcusgill/challenge/images/screenshots/page_load.png)
+![Splashpage](https://raw.githubusercontent.com/nss-evening-cohort-05/pinsync-marcus-tom/master/images/loginScreenShot.png)
 
 
 
